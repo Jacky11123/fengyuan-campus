@@ -102,14 +102,14 @@ box(8,1.35,-59,1.3,1.05,.8,color('#a79f88'));
 building(-72,9,44,37,4);building(2,3,36,13,3);// Teaching block: two long wings and a central entrance core, matching reference 4.
 building(-39,59,38,24,4);building(-13,59,14,24,4,false);building(13,59,38,24,4);building(53,63,12,22,2,false);
 // Latest user-labelled reference supersedes the earlier removal of this strip.
-const namedBuildings={artMuseum:{x:52,z:129},library:{x:52,z:92,w:22,d:30},administration:{x:-20,z:103,w:79,d:15},teaching:{x:-13,z:59,w:90,d:24}};
-building(-20,103,79,15,3);
+const namedBuildings={artMuseum:{x:52,z:129},library:{x:52,z:92,w:22,d:30},administration:{x:-25,z:103,w:69,d:15},teaching:{x:-13,z:59,w:90,d:24}};
+building(-25,103,69,15,3);
 building(52,92,22,30,3,false);
 // Two raised white roof lights distinguish the library from the solar-roofed blocks.
 box(54,11.3,88,10,.5,2.5,C.white);box(54,11.3,94,10,.5,2.5,C.white);
 // Satellite detail: west strip is OPEN PARKING, not a classroom wing.
 // East roofs form two narrow wings and a connecting core, with an open recess.
-building(36,117,45,12,3);building(52,129,13,12,3,false);building(40,139,36,11,3);
+building(36,124,45,12,3);building(52,129,13,12,3,false);building(40,139,36,11,3);
 // Rebuild the entrance courtyard from the supplied close-up satellite image.
 // No circular garden: an open lawn, curved footpath, parking at west, dense trees at east/south.
 flat(-28,129.5,39,33,C.grass,.18);
@@ -131,8 +131,13 @@ for(const [x,z,c] of [[-54,116.5,'#dfdfd4'],[-54,123.5,'#8f9896'],[-54,137.5,'#c
 }
 const gardenPath=smoothRoute([[-42,139],[-40,131],[-36,120],[-29,117],[-20,117]]);
 path(gardenPath,3.2,C.path,.26);flat(-19,119,6,7,C.path,.25);
-// Open ground between the two eastern wings.
-flat(29,129,30,9,C.path,.18);
+// Recess stays open south of the shifted north wing.
+flat(29,132,30,3,C.path,.18);
+// User red-line reference: open lane separates administration and art museum,
+// turns north along the library west side, and meets the existing campus road.
+const administrationArtRoad=[[8,129],[8,114],[35,114],[35,88]];
+path(administrationArtRoad,5,C.road,.27);
+for(const [x,z] of administrationArtRoad.slice(1,-1))ellipse(x,z,2.5,2.5,C.road,.27);
 // Retain only trees outside the user-circled lawns; preserve the existing footpath.
 for(const [x,z,size] of [[-10,115,1.6],[-3,117,1.5],[-39,115,1],[-26,115,1.1]])tree(x,z,size);
 flat(0,28,30,20,C.grass);path([[-10,39],[10,24],[15,14]],2,C.path);
@@ -284,7 +289,7 @@ function lookAt(eye,target){const z=norm(sub(eye,target)),x=norm(cross([0,1,0],z
 function perspective(aspect,eye,aim){const f=1/Math.tan(Math.PI/7),direction=norm(sub(aim,eye));let closest=Infinity,farthest=0;for(const x of [-157,157])for(const y of [-4,28])for(const z of [-204,204]){const depth=dot(sub([x,y,z],eye),direction);closest=Math.min(closest,depth);farthest=Math.max(farthest,depth)}const near=Math.max(.5,closest*.7),far=Math.max(100,farthest+30);return[f/aspect,0,0,0,0,f,0,0,0,0,(far+near)/(near-far),-1,0,0,2*far*near/(near-far),0]}
 function multiply(a,b){let r=new Float32Array(16);for(let c=0;c<4;c++)for(let row=0;row<4;row++)for(let k=0;k<4;k++)r[c*4+row]+=a[k*4+row]*b[c*4+k];return r}
 let target=[0,0,4],theta=-.52,phi=.76,distance=510,mode='overview',eye=[-85,2.4,173],yaw=0,pitch=0,showLabels=true,trees=true,neighbors=true;
-const annotations=[{p:[-5,1,-110],title:'操場',sub:'田徑跑道・草地'},{p:[8,4.7,-60],title:'司令台',sub:''},{p:[-85,1,151],title:'校門',sub:'水源路側'},{p:[78,2.7,151],title:'東側門',sub:'水源路126巷側'},{p:[64.5,.5,132],title:'停車格',sub:'美術館東側'},{p:[66.5,.5,92],title:'停車格',sub:'圖書館周邊'},{p:[91,.5,121],title:'水源路126巷',sub:'沿路停車格'},{p:[-72,15,9],title:'活動中心',sub:''},{p:[2,12,3],title:'科學館',sub:''},{p:[4,12,-34],title:'愛校樓',sub:''},{p:[-40,12,-37],title:'北樓',sub:''},{p:[-71,12,-39],title:'弘藝樓',sub:''},{p:[53,8,63],title:'輔導室',sub:''},{p:[-53,.5,130],title:'停車場',sub:'行政大樓南側'},{p:[52,12,129],title:'美術館',sub:''},{p:[52,12,92],title:'圖書館',sub:''},{p:[-20,12,103],title:'行政大樓',sub:''},{p:[-13,16,59],title:'教學樓',sub:''},{p:[-22,.5,166],title:'水源路',sub:''},{p:[74,10,12],title:'風雨球場',sub:'開放式鋼棚'},{p:[80,4,-52],title:'學生餐廳',sub:''},{p:[74,.5,69],title:'戶外籃球場',sub:''},{p:[-49,1,-158],title:'排球場 1',sub:''},{p:[-9,1,-156],title:'排球場 2',sub:''},{p:[39,6,-154],title:'棒球練習場',sub:'防護網籠'},{p:[-106,1,-110],title:'網球場',sub:''},...planPositions];
+const annotations=[{p:[-5,1,-110],title:'操場',sub:'田徑跑道・草地'},{p:[8,4.7,-60],title:'司令台',sub:''},{p:[-85,1,151],title:'校門',sub:'水源路側'},{p:[78,2.7,151],title:'東側門',sub:'水源路126巷側'},{p:[64.5,.5,132],title:'停車格',sub:'美術館東側'},{p:[66.5,.5,92],title:'停車格',sub:'圖書館周邊'},{p:[91,.5,121],title:'水源路126巷',sub:'沿路停車格'},{p:[-72,15,9],title:'活動中心',sub:''},{p:[2,12,3],title:'科學館',sub:''},{p:[4,12,-34],title:'愛校樓',sub:''},{p:[-40,12,-37],title:'北樓',sub:''},{p:[-71,12,-39],title:'弘藝樓',sub:''},{p:[53,8,63],title:'輔導室',sub:''},{p:[-53,.5,130],title:'停車場',sub:'行政大樓南側'},{p:[52,12,129],title:'美術館',sub:''},{p:[52,12,92],title:'圖書館',sub:''},{p:[-25,12,103],title:'行政大樓',sub:''},{p:[-13,16,59],title:'教學樓',sub:''},{p:[-22,.5,166],title:'水源路',sub:''},{p:[74,10,12],title:'風雨球場',sub:'開放式鋼棚'},{p:[80,4,-52],title:'學生餐廳',sub:''},{p:[74,.5,69],title:'戶外籃球場',sub:''},{p:[-49,1,-158],title:'排球場 1',sub:''},{p:[-9,1,-156],title:'排球場 2',sub:''},{p:[39,6,-154],title:'棒球練習場',sub:'防護網籠'},{p:[-106,1,-110],title:'網球場',sub:''},...planPositions];
 for(const a of annotations){a.el=document.createElement('div');a.el.className='maplabel'+(a.locationOnly?' locationOnly':'');a.el.innerHTML=`<strong>${a.title}</strong>${a.sub?`<small>${a.sub}</small>`:''}`;document.querySelector('#labels').append(a.el)}
 const locationSelect=document.querySelector('#locationSelect');
 for(let i=0;i<annotations.length;i++){const option=document.createElement('option');option.value=String(i);option.textContent=annotations[i].title+((annotations[i].title==='停車場'||annotations[i].title==='停車格')?'（'+annotations[i].sub+'）':'')+(annotations[i].sub.includes('男生宿舍')?'（男生宿舍）':annotations[i].sub.includes('女生宿舍')?'（女生宿舍）':'');locationSelect.append(option)}
