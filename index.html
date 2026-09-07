@@ -1,0 +1,314 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#e5e7de"><title>豐原高中｜立體校園</title><style>:root{font-family:Arial,"Noto Sans TC","Microsoft JhengHei",sans-serif;color:#33473c;background:#e5e7de;font-size:16px}*{box-sizing:border-box}body{margin:0;overflow:hidden}#scene{position:fixed;inset:0;width:100%;height:100%;touch-action:none;outline:none}header{position:fixed;top:30px;left:34px;right:34px;display:flex;justify-content:space-between;pointer-events:none}.brand,.edition{font-size:12px;letter-spacing:2px;font-weight:600}.edition{color:#69756a}.intro{position:fixed;top:110px;left:34px;pointer-events:none;max-width:330px}.eyebrow{font-size:12px;letter-spacing:2px;color:#6c786e}h1{font-weight:600;letter-spacing:5px;font-size:34px;margin:13px 0}.subtitle{font-size:15px;letter-spacing:1px;color:#657466}.coords{font-size:12px;letter-spacing:1px;margin-top:27px}.note{font-size:12px;line-height:1.8;color:#697369;max-width:230px;border-top:1px solid #c9cec3;padding-top:12px}.layers{position:fixed;right:28px;top:108px;background:#f7f8efe8;border:1px solid #d9ddcf;border-radius:8px;width:177px;padding:19px;box-shadow:0 8px 25px #344c3707}.layers h2{font-size:12px;font-weight:500;letter-spacing:2px;margin:0 0 20px;color:#758070}.layers label{display:flex;align-items:center;justify-content:space-between;font-size:14px;margin:16px 0;cursor:pointer}input{appearance:none;width:28px;height:16px;border-radius:10px;background:#bcc5b5;position:relative;cursor:pointer;margin:0}input:checked{background:#465f4e}input:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:#fff;top:3px;left:3px}input:checked:after{left:15px}.legend{border-top:1px solid #dde0d5;margin-top:20px;padding-top:15px;font-size:12px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.legend i{width:6px;height:6px;background:#baaa79}.legend i.gray{background:#a2aca1;margin-left:5px}button{font:inherit;cursor:pointer;border:0;color:inherit}button:focus-visible,input:focus-visible{outline:3px solid #be8738;outline-offset:4px}.compass{position:fixed;right:48px;bottom:190px}.compass button{background:transparent;font-size:20px;line-height:1.3}.zoom{position:fixed;right:40px;bottom:285px;display:grid;border:1px solid #ced5c7;border-radius:8px;overflow:hidden}.zoom button{height:38px;width:38px;background:#f6f7ef;font-size:22px}.zoom button+button{border-top:1px solid #d9ded0}footer{position:fixed;bottom:26px;left:50%;transform:translateX(-50%);text-align:center;white-space:nowrap}#help,.mobileHelp{font-size:12px;color:#687667;letter-spacing:1px}nav{display:flex;gap:4px;padding:7px;background:#354c40f0;border-radius:9px;box-shadow:0 7px 20px #283a3220}nav button{padding:13px 21px;background:transparent;border-radius:5px;color:#d8e1d3;font-size:14px;transition:background .2s}nav button.active{background:#e8ecdd;color:#354c40}nav button:hover{background:#617260;color:#fff}.mobileHelp{display:none}.maplabel{position:fixed;pointer-events:none;background:#fcfbeeeb;padding:9px 12px;border-radius:4px;border:1px solid #d7dbcd;font-size:12px;box-shadow:0 3px 10px #3043310a;transform:translate(-50%,-100%);white-space:nowrap}.maplabel strong{font-size:13px;font-weight:500;display:block}.maplabel small{display:block;color:#74806e;margin-top:4px;font-size:11px}.maplabel:after{content:"";position:absolute;left:50%;top:100%;height:13px;width:1px;background:#89927e}#walkControls{position:fixed;left:35px;bottom:100px;text-align:center}#walkControls button{width:43px;height:43px;border-radius:5px;margin:2px;background:#f8f9efdf;font-size:20px;border:1px solid #c4cebf;touch-action:none}#error{position:fixed;inset:40% 15% auto;background:#fff;padding:30px;line-height:1.8;border-radius:8px} [hidden]{display:none!important}@media(max-width:700px){header{left:20px;right:20px;top:22px}.edition{display:none}.intro{top:58px;left:20px;max-width:240px}h1{font-size:26px;margin:10px 0}.subtitle{font-size:13px}.coords{margin-top:15px;font-size:11px}.note{font-size:11px;max-width:195px}.layers{top:68px;right:14px;width:130px;padding:12px}.layers h2{margin-bottom:12px}.layers label{font-size:12px;margin:13px 0}.legend{font-size:10px;margin-top:12px;padding-top:12px;gap:4px}.legend i.gray{margin-left:0}footer{bottom:18px;width:calc(100% - 28px)}nav{justify-content:center;padding:5px;gap:1px}nav button{padding:12px 10px;font-size:13px;flex:1}#help{font-size:11px;white-space:normal;line-height:1.6}.mobileHelp{display:block;font-size:11px;margin-bottom:0}.zoom{right:18px;bottom:195px}.compass{right:25px;bottom:140px}.maplabel{padding:6px 8px}.maplabel small{display:none}#walkControls{left:18px;bottom:140px}}
+
+#locationSelect{font:inherit;font-size:13px;width:100%;padding:7px 3px;color:#33473c;background:#fafbf3;border:1px solid #bdc7b7;border-radius:4px}.locationNote{font-size:11px;line-height:1.5;color:#6f776b;margin:9px 0 13px}.maplabel.locationOnly{border:1px dashed #a8844d;background:#fffaf0ed}.layers{width:200px}@media(max-width:700px){.layers{width:140px}.locationNote{font-size:10px}#locationSelect{font-size:12px}}
+</style></head><body>
+<canvas id="scene" aria-label="可旋轉與縮放的豐原高中立體校園" tabindex="0"></canvas>
+<header><span class="brand">▥ &nbsp; FENG YUAN</span><span class="edition">校園空間探索 / 01</span></header>
+<section class="intro"><p class="eyebrow">TAICHUNG · FENGYUAN</p><h1>豐原高中</h1><p class="subtitle">走近校園，看見每個角落。</p><p class="coords">24.255938° N　120.741811° E</p><p class="note">依空拍圖重建配置 · 建築高度與立面為示意</p></section>
+<aside class="layers"><h2>地點定位</h2><select id="locationSelect" aria-label="選擇校園地點"><option value="">選擇地點…</option></select><p class="locationNote">虛線標籤為平面圖位置示意</p><label>校園標示<input id="labelsToggle" type="checkbox" checked></label><label>周邊建築<input id="neighborToggle" type="checkbox" checked></label><label>樹木綠化<input id="treeToggle" type="checkbox" checked></label><div class="legend"><i></i> 校園建築 <i class="gray"></i> 周邊街區</div></aside>
+<div id="labels"></div><div class="compass" title="回到北向視角"><button id="north" aria-label="北向鳥瞰">N<br>↑</button></div>
+<div class="zoom"><button id="plus" aria-label="放大">＋</button><button id="minus" aria-label="縮小">−</button></div>
+<div id="walkControls" hidden><button data-move="forward" aria-label="向前">↑</button><div><button data-move="left" aria-label="向左">←</button><button data-move="back" aria-label="向後">↓</button><button data-move="right" aria-label="向右">→</button></div></div>
+<footer><p id="help">拖曳旋轉 · 滾輪縮放 · 右鍵拖曳平移</p><nav aria-label="視角切換"><button data-view="overview" class="active">全校鳥瞰</button><button data-view="gate">校門近看</button><button data-view="track">操場近看</button><button data-view="walk">街道漫遊</button></nav><p class="mobileHelp">單指旋轉 · 雙指縮放／平移</p></footer>
+<div id="error" hidden>無法啟動 3D 畫面。請使用支援 WebGL 的瀏覽器，並開啟硬體加速後重新整理。</div>
+<script>
+(()=>{
+// Self-contained WebGL scene; schematic footprints traced from the supplied aerial reference.
+const canvas=document.querySelector('#scene');
+const gl=canvas.getContext('webgl',{antialias:true,alpha:false});
+if(!gl){document.querySelector('#error').hidden=false;throw new Error('WebGL unavailable')}
+const vs=`attribute vec3 aPos;attribute vec3 aNormal;attribute vec3 aColor;uniform mat4 uVP;varying vec3 vColor;void main(){float light=.68+.32*max(dot(normalize(aNormal),normalize(vec3(-.6,1.,.5))),0.);vColor=aColor*light;gl_Position=uVP*vec4(aPos,1.);}`;
+const fs=`precision mediump float;varying vec3 vColor;void main(){gl_FragColor=vec4(vColor,1.);}`;
+function shader(type,src){const s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(s));return s}
+const prog=gl.createProgram();gl.attachShader(prog,shader(gl.VERTEX_SHADER,vs));gl.attachShader(prog,shader(gl.FRAGMENT_SHADER,fs));gl.linkProgram(prog);if(!gl.getProgramParameter(prog,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(prog));gl.useProgram(prog);
+const locs=['aPos','aNormal','aColor'].map(n=>gl.getAttribLocation(prog,n)),vpLoc=gl.getUniformLocation(prog,'uVP');
+const meshes={base:[],neighbor:[],tree:[]};let group=meshes.base;
+const color=h=>[parseInt(h.slice(1,3),16)/255,parseInt(h.slice(3,5),16)/255,parseInt(h.slice(5,7),16)/255];
+const C={wall:color('#dddac0'),edge:color('#f1eed9'),roof:color('#b6b7a3'),glass:color('#52665b'),grass:color('#a6b887'),path:color('#cdcebb'),road:color('#7c877b'),solar:color('#4b6470'),white:color('#eeeede')};
+function tri(a,b,c,n,col){for(const p of[a,b,c])group.push(...p,...n,...col)}
+function quad(a,b,c,d,n,col){tri(a,b,c,n,col);tri(a,c,d,n,col)}
+function box(x,y,z,w,h,d,col){const a=x-w/2,b=x+w/2,k=y+h,f=z-d/2,t=z+d/2;quad([a,y,t],[b,y,t],[b,k,t],[a,k,t],[0,0,1],col);quad([b,y,f],[a,y,f],[a,k,f],[b,k,f],[0,0,-1],col);quad([b,y,t],[b,y,f],[b,k,f],[b,k,t],[1,0,0],col);quad([a,y,f],[a,y,t],[a,k,t],[a,k,f],[-1,0,0],col);quad([a,k,t],[b,k,t],[b,k,f],[a,k,f],[0,1,0],col)}
+function flat(x,z,w,d,col,y=.06){box(x,y,z,w,.025,d,col)}
+function path(points,width,col,y=.1){for(let i=1;i<points.length;i++){const a=points[i-1],b=points[i],dx=b[0]-a[0],dz=b[1]-a[1],len=Math.hypot(dx,dz),nx=-dz/len*width/2,nz=dx/len*width/2;quad([a[0]+nx,y,a[1]+nz],[a[0]-nx,y,a[1]-nz],[b[0]-nx,y,b[1]-nz],[b[0]+nx,y,b[1]+nz],[0,1,0],col)}}
+function ellipse(cx,cz,rx,rz,col,y=.15){for(let i=0;i<100;i++){const a=i*Math.PI/50,b=(i+1)*Math.PI/50;tri([cx,y,cz],[cx+rx*Math.cos(a),y,cz+rz*Math.sin(a)],[cx+rx*Math.cos(b),y,cz+rz*Math.sin(b)],[0,1,0],col)}}
+function stadium(cx,cz,half,r,col,y=.16){const pts=[];for(let i=0;i<=50;i++){const a=-Math.PI/2+i*Math.PI/50;pts.push([cx+half+r*Math.cos(a),cz+r*Math.sin(a)])}for(let i=0;i<=50;i++){const a=Math.PI/2+i*Math.PI/50;pts.push([cx-half+r*Math.cos(a),cz+r*Math.sin(a)])}for(let i=0;i<pts.length;i++)tri([cx,y,cz],[pts[i][0],y,pts[i][1]],[pts[(i+1)%pts.length][0],y,pts[(i+1)%pts.length][1]],[0,1,0],col);return pts}
+// Entrance driveway follows the user-marked route: gate, west of the south wings,
+// a bend around the southwest corner of the square block, then Shuiyuan Rd Lane 192.
+const drivewayControl=[[-85,166],[-85,144],[-85,108],[-83,85],[-72,66],[-63,48],[-66,42],[-89,42],[-105,40],[-111,29],[-111,10],[-111,-18],[-111,-44],[-113,-67]];
+function smoothRoute(points){let out=points;for(let pass=0;pass<2;pass++){const next=[out[0]];for(let i=1;i<out.length;i++){const a=out[i-1],b=out[i];next.push([a[0]*.75+b[0]*.25,a[1]*.75+b[1]*.25],[a[0]*.25+b[0]*.75,a[1]*.25+b[1]*.75])}next.push(out.at(-1));out=next}return out}
+const driveway=smoothRoute(drivewayControl);
+const drivewayWidth=z=>z>120?20:z>80?16:12;
+function roadClearance(x,z){let closest=Infinity;for(let i=1;i<driveway.length;i++){const a=driveway[i-1],b=driveway[i],dx=b[0]-a[0],dz=b[1]-a[1],t=Math.max(0,Math.min(1,((x-a[0])*dx+(z-a[1])*dz)/(dx*dx+dz*dz)));const px=a[0]+t*dx,pz=a[1]+t*dz;closest=Math.min(closest,Math.hypot(x-px,z-pz)-Math.max(drivewayWidth(a[1]),drivewayWidth(b[1]))/2)}return closest}
+const planPositions=[
+ {p:[92,.5,-120],title:'男一宿舍',sub:'男生宿舍 · 位置示意',locationOnly:true},
+ {p:[104,.5,-182],title:'男二宿舍',sub:'男生宿舍 · 位置示意',locationOnly:true},
+ {p:[37,.5,-189],title:'女一宿舍',sub:'女生宿舍 · 位置示意',locationOnly:true},
+ {p:[7,.5,-193],title:'女二宿舍',sub:'女生宿舍 · 位置示意',locationOnly:true},
+ {p:[63,.5,-182],title:'督導辦公室',sub:'平面圖位置示意',locationOnly:true},
+ {p:[80,.5,-173],title:'宿舍停車場',sub:'平面圖位置示意',locationOnly:true},
+ {p:[-83,.5,-164],title:'室外教學區',sub:'平面圖位置示意',locationOnly:true},
+ {p:[-107,.5,-188],title:'庶務宿舍',sub:'平面圖位置示意',locationOnly:true},
+ {p:[56,.5,-23],title:'植物園',sub:'平面圖位置示意',locationOnly:true},
+ {p:[51,.5,23],title:'永續校園計畫預定用地',sub:'平面圖位置示意',locationOnly:true},
+ {p:[-72,.5,145],title:'警衛室',sub:'平面圖位置示意',locationOnly:true},
+ {p:[-106,.5,69],title:'變電站',sub:'平面圖位置示意',locationOnly:true},
+ {p:[-107,.5,113],title:'校區預定地',sub:'平面圖位置示意',locationOnly:true},
+ {p:[-78,.5,-68],title:'停車場',sub:'網球場南側',locationOnly:true}
+];
+// Schematic masses requested for the previously location-only dormitory area.
+const dormitoryVolumes=[
+ {name:'男一宿舍',x:92,z:-119,w:12,d:26,floors:3},
+ {name:'男一宿舍',x:98,z:-130,w:12,d:10,floors:3},
+ {name:'男二宿舍',x:104,z:-182,w:14,d:22,floors:3},
+ {name:'女一宿舍',x:37,z:-189,w:22,d:14,floors:3},
+ {name:'女二宿舍',x:7,z:-193,w:20,d:12,floors:3},
+ {name:'督導辦公室',x:63,z:-182,w:12,d:10,floors:1},
+ {name:'庶務宿舍',x:-89,z:-195,w:10,d:8,floors:1}
+];
+const dormGroundAreas=[{x:80,z:-174,w:16,d:12},{x:-83,z:-164,w:18,d:10}];
+const footprints=[],treePositions=[];
+const extraSports={volleyball1:{x:-49,z:-158,w:28,d:13},volleyball2:{x:-9,z:-156,w:28,d:11},baseball:{x:39,z:-154,w:26,d:10,height:6},tennis:{x:-106,z:-110,w:18,d:34}};
+function building(x,z,w,d,floors=3,solar=true,col=C.wall){footprints.push({x,z,w,d,category:group===meshes.neighbor?"neighbor":"campus"});const h=floors*3.5;flat(x+2,z+2,w+3,d+3,color('#8f9b82'),.09);box(x,.16,z,w,h,d,col);box(x,h+.2,z,w+1,.4,d+1,C.edge);box(x,h+.61,z,w-1,.12,d-1,C.roof);for(let f=0;f<floors;f++){const y=1.1+f*3.5;box(x,y-.35,z+d/2+.12,w,.22,.3,C.edge);box(x,y-.35,z-d/2-.12,w,.22,.3,C.edge);for(let xx=-w/2+2;xx<w/2-1;xx+=3.1){box(x+xx,y,z+d/2+.04,1.65,1.8,.08,C.glass);box(x+xx,y,z-d/2-.04,1.65,1.8,.08,C.glass)}for(let zz=-d/2+2;zz<d/2-1;zz+=3.1){box(x+w/2+.04,y,z+zz,.08,1.8,1.65,C.glass);box(x-w/2-.04,y,z+zz,.08,1.8,1.65,C.glass)}}
+if(solar){for(let xx=-w/2+2.5;xx<w/2-2;xx+=3.1)for(let zz=-d/2+2.5;zz<d/2-2;zz+=4)box(x+xx,h+.78,z+zz,2.8,.18,3.5,C.solar)}else box(x-w/4,h+.75,z,Math.min(w/3,6),1.5,Math.min(d/2,5),C.edge);
+}
+function tree(x,z,size=1){for(const a of [...dormitoryVolumes,...dormGroundAreas]){const dx=Math.max(Math.abs(x-a.x)-a.w/2,0),dz=Math.max(Math.abs(z-a.z)-a.d/2,0);if(Math.hypot(dx,dz)<2.5*size+1)return}for(const area of Object.values(extraSports)){const dx=Math.max(Math.abs(x-area.x)-area.w/2,0),dz=Math.max(Math.abs(z-area.z)-area.d/2,0);if(Math.hypot(dx,dz)<2.5*size+1)return}if(roadClearance(x,z)<2.5*size+1)return;treePositions.push({x,z,r:2.5*size});const old=group;group=meshes.tree;box(x,0,z,.65*size,3*size,.65*size,color('#817f5a'));const col=color('#738c64'),r=2.5*size,cy=4.7*size;for(let j=0;j<5;j++)for(let i=0;i<7;i++){const p=(jj,ii)=>{const a=Math.PI*jj/5,b=Math.PI*2*ii/7;return[x+r*Math.sin(a)*Math.cos(b),cy+r*Math.cos(a),z+r*Math.sin(a)*Math.sin(b)]};const a=p(j,i),b=p(j+1,i),c=p(j+1,i+1),d=p(j,i+1);const n=[(a[0]+b[0]+c[0])/3-x,(a[1]+b[1]+c[1])/3-cy,(a[2]+b[2]+c[2])/3-z];quad(a,b,c,d,n,col)}group=old}
+// Ground, boundary roads, inner paths; north is negative Z.
+box(0,-3,0,312,3,405,color('#b4b8a3'));flat(0,0,310,402,C.grass);
+path([[-154,166],[154,166]],15,C.road);path([[-118,160],[-124,60],[-115,-40],[-126,-82],[-126,-145],[-103,-195]],9,C.road);path([[86,160],[83,90],[95,80],[99,40],[100,-10],[104,-105],[126,-193]],8,C.road);path([[-152,-189],[153,-155]],11,C.road);
+path([[36,82],[36,30],[45,-55]],6,C.path);path([[-100,12],[58,12]],6,C.path);path([[-9,49],[-9,-56]],5,C.path);path([[-93,-60],[-91,62]],4,C.path);
+for(let x=-148;x<152;x+=13)flat(x,166,7,.5,C.white,.13);
+for(let z=155;z<179;z+=2.2)flat(-85,z,8,1.1,C.white,.36);
+// Track follows the broad east-west oval in the northern part of the aerial reference.
+stadium(-5,-110,48,38,color('#c98e73'));stadium(-5,-110,48,27,C.grass,.2);
+for(let r=28;r<38;r+=1.65){const pts=[];for(let i=0;i<=100;i++){const a=-Math.PI/2+i*Math.PI/50;pts.push([-5+(i<=50?48:-48)+r*Math.cos(a),-110+r*Math.sin(a)])}path([...pts,pts[0]],.18,C.white,.22)}
+// Restore the infield over the lane generation.
+stadium(-5,-110,48,27,C.grass,.24);path([[-57,-130],[47,-130],[47,-90],[-57,-90],[-57,-130]],.2,C.white,.26);path([[-5,-130],[-5,-90]],.2,C.white,.26);const circle=[];for(let i=0;i<=60;i++)circle.push([-5+8*Math.cos(i*Math.PI/30),-110+8*Math.sin(i*Math.PI/30)]);path(circle,.18,C.white,.26);
+// Campus masses retain the irregular, staggered arrangement from the source image.
+building(-71,-39,40,25,3);building(-40,-37,16,23,3);building(4,-34,39,21,3,false);
+// User-marked buildings form one continuous complex along their south side.
+const northConnection={x:-23.75,z:-28.5,w:17.5,d:8};
+building(northConnection.x,northConnection.z,northConnection.w,northConnection.d,3,false);
+// Assembly stage sits between the building and the track, facing north toward the field.
+const assemblyStage={x:8,z:-60,w:18,d:9,platformHeight:1.2};
+box(8,.15,-60,18,1.2,9,C.edge);
+// Three broad steps face the track; no step projects onto the running lanes.
+box(8,.15,-66.7,14,.35,1.4,C.path);
+box(8,.15,-65.9,14,.65,1.4,C.path);
+box(8,.15,-65.1,14,.95,1.4,C.path);
+box(8,1.35,-55.65,18,2.4,.3,C.wall);
+for(const x of [.2,15.8])for(const z of [-63.7,-56.3])box(x,1.35,z,.35,2.8,.35,C.edge);
+box(8,4.15,-60,19,.35,10,C.edge);
+box(8,1.35,-59,1.3,1.05,.8,color('#a79f88'));
+building(-72,9,44,37,4);building(2,3,36,13,3);// Teaching block: two long wings and a central entrance core, matching reference 4.
+building(-39,59,38,24,4);building(-13,59,14,24,4,false);building(13,59,38,24,4);building(53,63,12,22,2,false);
+// Latest user-labelled reference supersedes the earlier removal of this strip.
+const namedBuildings={artMuseum:{x:52,z:129},library:{x:52,z:92,w:22,d:30},administration:{x:-20,z:103,w:79,d:15},teaching:{x:-13,z:59,w:90,d:24}};
+building(-20,103,79,15,3);
+building(52,92,22,30,3,false);
+// Two raised white roof lights distinguish the library from the solar-roofed blocks.
+box(54,11.3,88,10,.5,2.5,C.white);box(54,11.3,94,10,.5,2.5,C.white);
+// Satellite detail: west strip is OPEN PARKING, not a classroom wing.
+// East roofs form two narrow wings and a connecting core, with an open recess.
+building(36,117,45,12,3);building(52,129,13,12,3,false);building(40,139,36,11,3);
+// Rebuild the entrance courtyard from the supplied close-up satellite image.
+// No circular garden: an open lawn, curved footpath, parking at west, dense trees at east/south.
+flat(-28,129.5,39,33,C.grass,.18);
+flat(-43,127,5,22,C.grass,.18);
+flat(-9,135,38,22,C.grass,.18);
+flat(-53,130,13,32,C.road,.19);
+path([[-65,88],[-65,145],[-59,151],[-8,151],[73,151],[83,151]],7,C.road,.20);
+path([[-83,88],[-60,88],[38,88]],8,C.road,.20);
+path([[73,88],[73,151]],6,C.road,.20);
+// Parking bays west of the lawn; the access lane remains clear.
+for(let z=115;z<=143;z+=3.5){path([[-59,z],[-48,z]],.16,C.white,.24)}
+path([[-48,115],[-48,143]],.16,C.white,.24);
+// North parking row between the two east-west buildings.
+flat(-22,77.5,62,5,C.road,.19);
+for(let x=-51;x<=8;x+=3.4)path([[x,75],[x,80]],.15,C.white,.24);
+// A few understated parked cars to distinguish parking from buildings.
+for(const [x,z,c] of [[-54,116.5,'#dfdfd4'],[-54,123.5,'#8f9896'],[-54,137.5,'#c2c6bc']]){
+ box(x,.24,z,4.8,1.05,2,color(c));box(x+.15,1.29,z,2.5,.55,1.75,C.glass);
+}
+const gardenPath=smoothRoute([[-42,139],[-40,131],[-36,120],[-29,117],[-20,117]]);
+path(gardenPath,3.2,C.path,.26);flat(-19,119,6,7,C.path,.25);
+// Open ground between the two eastern wings.
+flat(29,129,30,9,C.path,.18);
+// Retain only trees outside the user-circled lawns; preserve the existing footpath.
+for(const [x,z,size] of [[-10,115,1.6],[-3,117,1.5],[-39,115,1],[-26,115,1.1]])tree(x,z,size);
+flat(0,28,30,20,C.grass);path([[-10,39],[10,24],[15,14]],2,C.path);
+// User identification: 1 open steel canopy; 2 cafeteria at northeast; 3 outdoor court at south.
+const sportsAreas={canopy:{x:74,z:12,w:18,d:84,height:9.4},cafeteria:{x:80,z:-52,w:20,d:36},outdoor:{x:74,z:69,w:17,d:28}};
+function basketballCourt(x,z,w,d){
+ flat(x,z,w,d,color('#758b88'),.18);
+ const hw=w/2-1,hd=d/2-1;
+ path([[x-hw,z-hd],[x+hw,z-hd],[x+hw,z+hd],[x-hw,z+hd],[x-hw,z-hd]],.14,C.white,.23);
+ path([[x-hw,z],[x+hw,z]],.14,C.white,.23);
+ function circleLine(cx,cz,r,y,col){const pts=[];for(let i=0;i<=48;i++){let a=i*Math.PI/24;pts.push([cx+r*Math.cos(a),cz+r*Math.sin(a)])}path(pts,.12,col,y)}
+ circleLine(x,z,1.7,.23,C.white);
+ for(const sign of [-1,1]){
+  const end=z+sign*hd,key=end-sign*5;
+  path([[x-2.4,end],[x-2.4,key],[x+2.4,key],[x+2.4,end]],.14,C.white,.23);
+  const arc=[];for(let i=0;i<=40;i++){const a=Math.PI*i/40;arc.push([x+5.9*Math.cos(a),end-sign*5.9*Math.sin(a)])}path(arc,.14,C.white,.23);
+  box(x,.22,end+sign*.55,.2,3.6,.2,color('#68756b'));
+  box(x,3.4,end-sign*.4,.18,.18,1.9,color('#68756b'));
+  box(x,2.85,end-sign*1.15,1.8,1.05,.12,C.white);
+  circleLine(x,end-sign*1.6,.23,3.05,color('#b97850'));
+ }
+}
+// Three play areas under a single long, open-sided roof.
+for(const z of [-15,12,39])basketballCourt(74,z,18,27);
+const steel=color('#8b9991'),roof=color('#6a7a7a');
+for(let z=-30;z<=54;z+=12){
+ for(const x of [65,83])box(x,.2,z,.32,7.4,.32,steel);
+ box(74,7.4,z,18,.24,.28,steel);
+ // Triangular roof trusses, visible from underneath.
+ for(const sign of [-1,1]){
+  const x0=74+sign*9;
+  quad([x0,7.4,z],[x0,7.65,z],[74,9.5,z],[74,9.25,z],[0,0,1],steel);
+  quad([x0,7.4,z],[x0+sign*.14,7.5,z],[74,7.64,z],[74,7.4,z],[0,0,1],steel);
+ }
+ box(74,7.5,z,.2,1.9,.2,steel);
+}
+for(const x of [65,83])box(x,7.4,12,.28,.28,85,steel);
+// Pitched metal roof (no classroom walls or window facades).
+quad([64,7.6,-31],[74,9.6,-31],[74,9.6,55],[64,7.6,55],[-.2,1,0],roof);
+quad([74,9.6,-31],[84,7.6,-31],[84,7.6,55],[74,9.6,55],[.2,1,0],roof);
+// Solar arrays follow the two sloped roof planes shown in the satellite reference.
+for(const sign of [-1,1])for(let x=.5;x<9;x+=2)for(let z=-29;z<53;z+=4){
+ const a=74+sign*x,b=74+sign*(x+1.7),ya=9.64-x*.2,yb=9.64-(x+1.7)*.2;
+ quad([a,ya,z],[b,yb,z],[b,yb,z+3.65],[a,ya,z+3.65],[sign*.2,1,0],C.solar);
+}
+// Cafeteria relocated to the marked site directly north of the canopy; only a narrow gap remains.
+building(80,-52,20,36,1,false);
+basketballCourt(74,69,17,28);
+// Nets are modelled as open mesh, not opaque walls.
+function sportsNet(x,z,length,height,alongX=true,bottom=0){
+ const mesh=color('#7b8980'),post=color('#607269');
+ for(const sign of [-1,1])box(x+(alongX?sign*length/2:0),.2,z+(alongX?0:sign*length/2),.14,height+.2,.14,post);
+ for(let h=bottom+.3;h<=height;h+=.35)box(x,h,z,alongX?length:.035,.035,alongX?.035:length,mesh);
+ for(let t=-length/2;t<=length/2;t+=.4)box(x+(alongX?t:0),bottom+.2,z+(alongX?0:t),.025,height-bottom,.025,mesh);
+ box(x,height,z,alongX?length:.05,.06,alongX?.05:length,C.white);
+}
+function volleyball(area){
+ const {x,z,w,d}=area;flat(x,z,w,d,color('#ba9380'),.18);flat(x,z,18,9,color('#849782'),.21);
+ path([[x-9,z-4.5],[x+9,z-4.5],[x+9,z+4.5],[x-9,z+4.5],[x-9,z-4.5]],.13,C.white,.26);
+ for(const offset of [-3,0,3])path([[x+offset,z-4.5],[x+offset,z+4.5]],.13,C.white,.26);
+ sportsNet(x,z,10,2.43,false,1.4);
+}
+volleyball(extraSports.volleyball1);volleyball(extraSports.volleyball2);
+// Enclosed batting practice cage: posts, mesh sides and overhead netting.
+{
+ const {x,z,w,d,height:h}=extraSports.baseball;flat(x,z,w,d,color('#718774'),.19);
+ for(const sign of [-1,1]){sportsNet(x,z+sign*d/2,w,h,true);sportsNet(x+sign*w/2,z,d,h,false)}
+ for(let xx=x-w/2;xx<=x+w/2;xx+=1)box(xx,h,z,.025,.025,d,color('#7b8980'));
+ for(let zz=z-d/2;zz<=z+d/2;zz+=1)box(x,h,zz,w,.025,.025,color('#7b8980'));
+ // Intermediate steel uprights support the long net cage.
+ for(let xx=x-w/2+6;xx<x+w/2;xx+=6)for(const sign of [-1,1])box(xx,.2,z+sign*d/2,.12,h,.12,color('#607269'));
+ flat(x+8,z,1,.4,C.white,.23);flat(x-8,z,1.2,1.2,color('#d3c3a0'),.23);
+}
+// Tennis court on the west side of the oval track.
+{
+ const {x,z,w,d}=extraSports.tennis;flat(x,z,w,d,color('#b58c78'),.18);flat(x,z,10.97,23.77,color('#7f9690'),.21);
+ const hw=10.97/2,hd=23.77/2;
+ path([[x-hw,z-hd],[x+hw,z-hd],[x+hw,z+hd],[x-hw,z+hd],[x-hw,z-hd]],.12,C.white,.26);
+ for(const side of [-1,1]){path([[x+side*4.115,z-hd],[x+side*4.115,z+hd]],.12,C.white,.26);path([[x-4.115,z+side*6.4],[x+4.115,z+side*6.4]],.12,C.white,.26)}
+ path([[x,z-6.4],[x,z+6.4]],.12,C.white,.26);sportsNet(x,z,12,1.07,true,0);
+ for(const side of [-1,1])sportsNet(x,z+side*(d/2-.3),w-.6,3,true,0);
+}
+// Continuous asphalt, including round joints, lies above the old minor paths.
+for(let i=1;i<driveway.length;i++){const a=driveway[i-1],b=driveway[i],w=Math.max(drivewayWidth(a[1]),drivewayWidth(b[1]));path([a,b],w+1.1,C.path,.29);ellipse(a[0],a[1],w/2+.55,w/2+.55,C.path,.29)}
+for(let i=1;i<driveway.length;i++){const a=driveway[i-1],b=driveway[i],w=Math.max(drivewayWidth(a[1]),drivewayWidth(b[1]));path([a,b],w,C.road,.32);ellipse(a[0],a[1],w/2,w/2,C.road,.32)}
+// East-side entrance and parking rows from the user's numbered satellite detail.
+const eastGate={x:78,z:151,clearWidth:10};
+const eastParkingAreas=[
+ {name:'美術館側停車格',x:64.5,z:132,w:6,d:24},
+ {name:'圖書館南側停車格',x:54,z:109,w:22,d:2.1},
+ {name:'圖書館東側停車格',x:66.5,z:92,w:3.5,d:26}
+];
+for(const a of eastParkingAreas)flat(a.x,a.z,a.w,a.d,color('#8f9585'),.22);
+// Perpendicular bays beside the art museum.
+for(let z=120;z<=144;z+=3)path([[61.5,z],[67.5,z]],.15,C.white,.28);
+path([[67.5,120],[67.5,144]],.15,C.white,.28);
+// Parallel bays beneath the library's southern frontage.
+for(let x=43;x<=65;x+=5.5)path([[x,107.95],[x,110.05]],.13,C.white,.28);
+path([[43,110.05],[65,110.05]],.13,C.white,.28);
+// Parallel bays along the library's eastern side.
+for(let z=79;z<=105;z+=5.2)path([[64.75,z],[68.25,z]],.13,C.white,.28);
+path([[68.25,79],[68.25,105]],.13,C.white,.28);
+const eastStreetX=z=>83+(z-90)*3/70;
+const curbParking=[];
+// Roadside stalls lie outside the through lane of Shuiyuan Road Lane 126.
+for(let z=99;z<149;z+=6){const x=eastStreetX(z)+6;curbParking.push({x,z,w:3,d:5.7});flat(x,z,3,5.7,color('#8f9585'),.22);path([[x-1.5,z-2.85],[x+1.5,z-2.85],[x+1.5,z+2.85]],.13,C.white,.28)}
+function parkedCar(x,z,across=false,col=C.white){box(x,.28,z,across?4.6:1.9,1.05,across?1.9:4.6,col);box(x,1.33,z,across?2.5:1.7,.55,across?1.7:2.5,C.glass)}
+for(const z of [124.5,133.5,142.5])parkedCar(64.4,z,true);
+for(const x of [45.7,56.7])parkedCar(x,109,true);
+for(const z of [87,97.4])parkedCar(66.4,z,false,color('#b9c0b6'));
+for(const z of [105,123,141])parkedCar(eastStreetX(z)+6,z,false);
+// Open gateway: pillars at the edges, with a clear paved passage facing the lane.
+path([[69,151],[86,151]],10,C.road,.34);
+for(const z of [145,157]){box(78,.2,z,1.4,2.3,1.4,color('#b2937a'));box(78,2.5,z,1.7,.2,1.7,C.edge)}
+// Gate aligned with the road opening, west of the courtyard wing.
+for(const x of[-98,-72]){box(x,0,151,2.8,5,3,color('#b2937a'));box(x,5,151,3.4,.4,3.4,C.edge)}
+for(let x=-114;x<60;x+=3){if(x>-100&&x<-70)continue;box(x,0,157,.3,1.8,.3,color('#727f6b'))}
+box(-7,0,157,126,.6,.8,color('#b2937a'));box(-108,0,157,12,.6,.8,color('#b2937a'));
+for(let x=-92;x<75;x+=8){if(x<-70)tree(x,148,.75);tree(x,-159,.9)}for(let z=-154;z<140;z+=9){tree(-104,z,.85);if(z<80)tree(60,z,.75)}for(const[x,z,s]of[[-31,-49,1.6],[24,-55,1.3],[-36,20,1.1],[30,22,1.1],[15,45,.9],[104,102,1.3],[114,74,1.5],[116,34,1.4]])tree(x,z,s);
+// Neighbourhood context, intentionally simplified (not surveyed footprints or heights).
+group=meshes.neighbor;
+for(let i=10;i<13;i++){let z=-165+i*25;building(-141,z,18,19,2+(i%3),false,color('#c7cabb'))}
+for(let i=0;i<10;i++){let x=-125+i*28;building(x,193,21,21,2+(i%2),false,color('#c7cabb'))}
+for(const[x,z,w,d,f]of[[126,-123,23,26,3],[131,-80,25,28,2],[137,-26,23,35,3],[128,121,27,27,3],[115,151,24,19,2],[119,5,31,22,2]])building(x,z,w,d,f,false,color('#c7cabb'));
+group=meshes.base;
+for(const b of dormitoryVolumes)building(b.x,b.z,b.w,b.d,b.floors,false,C.wall);
+// Dorm parking: paved surface, visible parking bays and an approach to the road.
+flat(80,-174,16,12,C.road,.2);
+for(let x=73;x<=87;x+=2.8)path([[x,-179],[x,-173.5]],.14,C.white,.25);
+path([[88,-172],[92,-172],[92,-163]],3.5,C.road,.21);
+for(const [x,c] of [[75,'#d5d7cc'],[83.4,'#899895']]){box(x,.25,-176.2,1.9,1.1,4.3,color(c));box(x,1.35,-176.2,1.7,.5,2.5,C.glass)}
+// Outdoor teaching area remains open-air, with a teaching board and seating.
+flat(-83,-164,18,10,C.path,.2);
+for(const z of [-166,-163,-160])for(const x of [-87,-79]){
+ box(x,.55,z,5,.2,.65,color('#a69e80'));
+ for(const dx of [-1.7,1.7])box(x+dx,.2,z,.15,.35,.4,C.glass);
+}
+box(-83,1.1,-168,5,1.6,.15,color('#596e60'));
+for(const x of [-85,-81])box(x,.2,-168,.12,2.5,.12,C.glass);
+for(const a of planPositions){
+ const b=dormitoryVolumes.find(b=>b.name===a.title);
+ if(b){a.p=[b.x,b.floors*3.5+1.2,b.z];a.sub=(a.title.startsWith('男')?'男生宿舍 · ':a.title.startsWith('女')?'女生宿舍 · ':'')+'概略建物';a.locationOnly=false;}
+ else if(a.title==='宿舍停車場'||a.title==='室外教學區'){a.locationOnly=false;a.sub='場地示意';}
+ else ellipse(a.p[0],a.p[2],1.5,1.5,color('#c39e62'),.36);
+}
+const buffers=Object.fromEntries(Object.entries(meshes).map(([key,a])=>{const b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array(a),gl.STATIC_DRAW);return[key,{buffer:b,count:a.length/9}]}));
+const sub=(a,b)=>a.map((v,i)=>v-b[i]),dot=(a,b)=>a.reduce((s,v,i)=>s+v*b[i],0),cross=(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],norm=a=>{const n=Math.hypot(...a)||1;return a.map(v=>v/n)};
+function lookAt(eye,target){const z=norm(sub(eye,target)),x=norm(cross([0,1,0],z)),y=cross(z,x);return[x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-dot(x,eye),-dot(y,eye),-dot(z,eye),1]}
+function perspective(aspect,eye,aim){const f=1/Math.tan(Math.PI/7),direction=norm(sub(aim,eye));let closest=Infinity,farthest=0;for(const x of [-157,157])for(const y of [-4,28])for(const z of [-204,204]){const depth=dot(sub([x,y,z],eye),direction);closest=Math.min(closest,depth);farthest=Math.max(farthest,depth)}const near=Math.max(.5,closest*.7),far=Math.max(100,farthest+30);return[f/aspect,0,0,0,0,f,0,0,0,0,(far+near)/(near-far),-1,0,0,2*far*near/(near-far),0]}
+function multiply(a,b){let r=new Float32Array(16);for(let c=0;c<4;c++)for(let row=0;row<4;row++)for(let k=0;k<4;k++)r[c*4+row]+=a[k*4+row]*b[c*4+k];return r}
+let target=[0,0,4],theta=-.52,phi=.76,distance=510,mode='overview',eye=[-85,2.4,173],yaw=0,pitch=0,showLabels=true,trees=true,neighbors=true;
+const annotations=[{p:[-5,1,-110],title:'操場',sub:'田徑跑道・草地'},{p:[8,4.7,-60],title:'司令台',sub:''},{p:[-85,1,151],title:'校門',sub:'水源路側'},{p:[78,2.7,151],title:'東側門',sub:'水源路126巷側'},{p:[64.5,.5,132],title:'停車格',sub:'美術館東側'},{p:[66.5,.5,92],title:'停車格',sub:'圖書館周邊'},{p:[91,.5,121],title:'水源路126巷',sub:'沿路停車格'},{p:[-72,15,9],title:'活動中心',sub:''},{p:[2,12,3],title:'科學館',sub:''},{p:[4,12,-34],title:'愛校樓',sub:''},{p:[-40,12,-37],title:'北樓',sub:''},{p:[-71,12,-39],title:'弘藝樓',sub:''},{p:[53,8,63],title:'輔導室',sub:''},{p:[-53,.5,130],title:'停車場',sub:'行政大樓南側'},{p:[52,12,129],title:'美術館',sub:''},{p:[52,12,92],title:'圖書館',sub:''},{p:[-20,12,103],title:'行政大樓',sub:''},{p:[-13,16,59],title:'教學樓',sub:''},{p:[-22,.5,166],title:'水源路',sub:''},{p:[74,10,12],title:'風雨球場',sub:'開放式鋼棚'},{p:[80,4,-52],title:'學生餐廳',sub:''},{p:[74,.5,69],title:'戶外籃球場',sub:''},{p:[-49,1,-158],title:'排球場 1',sub:''},{p:[-9,1,-156],title:'排球場 2',sub:''},{p:[39,6,-154],title:'棒球練習場',sub:'防護網籠'},{p:[-106,1,-110],title:'網球場',sub:''},...planPositions];
+for(const a of annotations){a.el=document.createElement('div');a.el.className='maplabel'+(a.locationOnly?' locationOnly':'');a.el.innerHTML=`<strong>${a.title}</strong>${a.sub?`<small>${a.sub}</small>`:''}`;document.querySelector('#labels').append(a.el)}
+const locationSelect=document.querySelector('#locationSelect');
+for(let i=0;i<annotations.length;i++){const option=document.createElement('option');option.value=String(i);option.textContent=annotations[i].title+((annotations[i].title==='停車場'||annotations[i].title==='停車格')?'（'+annotations[i].sub+'）':'')+(annotations[i].sub.includes('男生宿舍')?'（男生宿舍）':annotations[i].sub.includes('女生宿舍')?'（女生宿舍）':'');locationSelect.append(option)}
+locationSelect.onchange=()=>{if(locationSelect.value==='')return;const a=annotations[Number(locationSelect.value)];setView('overview');target=[a.p[0],0,a.p[2]];distance=innerWidth<700?180:120;phi=.95;showLabels=true;document.querySelector('#labelsToggle').checked=true;dirty=true};
+const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
+function setView(view){mode=view;document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));document.querySelector('#walkControls').hidden=view!=='walk';document.querySelector('#help').textContent=view==='walk'?'拖曳環視 · W A S D／方向按鍵移動 · Esc 回鳥瞰':'拖曳旋轉 · 滾輪縮放 · 右鍵拖曳平移';if(view==='overview'){target=[0,0,4];theta=-.52;phi=.76;distance=window.innerWidth<700?665:510}if(view==='gate'){target=[-85,1,123];theta=-.12;phi=.23;distance=67}if(view==='track'){target=[-5,0,-108];theta=.5;phi=.48;distance=150}if(view==='walk'){eye=[-85,2.4,171];yaw=0;pitch=.08}dirty=true}
+let dirty=true;document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>setView(b.dataset.view));document.querySelector('#north').onclick=()=>{setView('overview');theta=0};
+function zoom(factor){if(mode==='walk'){move(factor<1?'forward':'back',3)}else distance=clamp(distance*factor,5,1000);dirty=true}
+document.querySelector('#plus').onclick=()=>zoom(.8);document.querySelector('#minus').onclick=()=>zoom(1.25);
+document.querySelector('#labelsToggle').onchange=e=>{showLabels=e.target.checked;dirty=true};document.querySelector('#neighborToggle').onchange=e=>{neighbors=e.target.checked;dirty=true};document.querySelector('#treeToggle').onchange=e=>{trees=e.target.checked;dirty=true};
+canvas.oncontextmenu=e=>e.preventDefault();canvas.addEventListener('wheel',e=>{e.preventDefault();zoom(Math.exp(clamp(e.deltaY,-100,100)*.0016))},{passive:false});
+const pointers=new Map();let gesture=null;
+canvas.addEventListener('pointerdown',e=>{canvas.setPointerCapture(e.pointerId);pointers.set(e.pointerId,{x:e.clientX,y:e.clientY,button:e.button});gesture=null;canvas.focus()});
+canvas.addEventListener('pointermove',e=>{if(!pointers.has(e.pointerId))return;const old=pointers.get(e.pointerId),dx=e.clientX-old.x,dy=e.clientY-old.y;pointers.set(e.pointerId,{x:e.clientX,y:e.clientY,button:old.button});if(pointers.size===2){const[a,b]=[...pointers.values()],d=Math.hypot(a.x-b.x,a.y-b.y),mid=[(a.x+b.x)/2,(a.y+b.y)/2];if(gesture){zoom(gesture.d/Math.max(d,1));pan(mid[0]-gesture.mid[0],mid[1]-gesture.mid[1])}gesture={d,mid}}else if(mode==='walk'){yaw-=dx*.005;pitch=clamp(pitch-dy*.004,-1.2,1.2)}else if(old.button===2||e.shiftKey)pan(dx,dy);else{theta-=dx*.005;phi=clamp(phi+dy*.004,.035,1.5)}dirty=true});
+for(const ev of['pointerup','pointercancel'])canvas.addEventListener(ev,e=>{pointers.delete(e.pointerId);gesture=null});
+function pan(dx,dy){if(mode==='walk')return;const s=distance*.0012;target[0]+=-dx*Math.cos(theta)*s+dy*Math.sin(theta)*s;target[2]+=dx*Math.sin(theta)*s+dy*Math.cos(theta)*s;target[0]=clamp(target[0],-190,190);target[2]=clamp(target[2],-220,220);dirty=true}
+function move(dir,step){if(mode!=='walk')return;const forward=[Math.sin(yaw),-Math.cos(yaw)],right=[Math.cos(yaw),Math.sin(yaw)];const v=dir==='forward'?forward:dir==='back'?forward.map(v=>-v):dir==='right'?right:right.map(v=>-v);eye[0]=clamp(eye[0]+v[0]*step,-155,155);eye[2]=clamp(eye[2]+v[1]*step,-195,198);dirty=true}
+const keys=new Set();const keyMap={w:'forward',ArrowUp:'forward',s:'back',ArrowDown:'back',a:'left',ArrowLeft:'left',d:'right',ArrowRight:'right'};
+window.addEventListener('keydown',e=>{if(e.key==='Escape')setView('overview');if(keyMap[e.key]&&mode==='walk'){e.preventDefault();keys.add(keyMap[e.key])}});window.addEventListener('keyup',e=>keys.delete(keyMap[e.key]));window.addEventListener('blur',()=>keys.clear());
+for(const b of document.querySelectorAll('[data-move]')){b.onpointerdown=e=>{e.preventDefault();b.setPointerCapture(e.pointerId);keys.add(b.dataset.move)};b.onpointerup=b.onpointercancel=()=>keys.delete(b.dataset.move)}
+function resize(){const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.round(innerWidth*dpr);canvas.height=Math.round(innerHeight*dpr);gl.viewport(0,0,canvas.width,canvas.height);dirty=true}window.addEventListener('resize',resize);resize();setView('overview');
+let last=0;function render(now){const dt=Math.min((now-last)/1000,.05);last=now;for(const k of keys)move(k,dt*18);if(dirty){dirty=false;let cam,aim;if(mode==='walk'){cam=eye;aim=[eye[0]+Math.sin(yaw)*Math.cos(pitch),eye[1]+Math.sin(pitch),eye[2]-Math.cos(yaw)*Math.cos(pitch)]}else{cam=[target[0]+distance*Math.sin(theta)*Math.cos(phi),target[1]+distance*Math.sin(phi),target[2]+distance*Math.cos(theta)*Math.cos(phi)];aim=target}const vp=multiply(perspective(canvas.width/canvas.height,cam,aim),lookAt(cam,aim));gl.clearColor(.898,.906,.871,1);gl.enable(gl.DEPTH_TEST);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.uniformMatrix4fv(vpLoc,false,vp);for(const[key,b]of Object.entries(buffers)){if(key==='tree'&&!trees||key==='neighbor'&&!neighbors)continue;gl.bindBuffer(gl.ARRAY_BUFFER,b.buffer);locs.forEach((l,i)=>{gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,3,gl.FLOAT,false,36,i*12)});gl.drawArrays(gl.TRIANGLES,0,b.count)}for(const a of annotations){const p=[...a.p,1],q=[0,0,0,0];for(let row=0;row<4;row++)for(let k=0;k<4;k++)q[row]+=vp[k*4+row]*p[k];const x=(q[0]/q[3]+1)*innerWidth/2,y=(1-q[1]/q[3])*innerHeight/2;a.el.hidden=!showLabels||mode==='walk'||q[3]<=0||x<20||x>innerWidth-20||y<60||y>innerHeight-90;a.el.style.left=x+'px';a.el.style.top=(y-15)+'px'}}requestAnimationFrame(render)}requestAnimationFrame(render);
+// Read-only diagnostics for geometry and camera verification.
+window.campusModel={eastGate,eastParkingAreas,curbParking,dormitoryVolumes,dormGroundAreas,planPositions,annotations,northConnection,assemblyStage,namedBuildings,extraSports,sportsAreas,driveway,drivewayWidth,roadClearance,footprints,treePositions,counts:Object.fromEntries(Object.entries(buffers).map(([k,v])=>[k,v.count])),setView,getState:()=>({mode,distance,target:[...target],eye:[...eye],trees,neighbors,showLabels})};
+
+})();
+</script></body></html>
