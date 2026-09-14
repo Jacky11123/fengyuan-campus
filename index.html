@@ -11,7 +11,9 @@
 <div id="walkControls" hidden><button data-move="forward" aria-label="向前">↑</button><div><button data-move="left" aria-label="向左">←</button><button data-move="back" aria-label="向後">↓</button><button data-move="right" aria-label="向右">→</button></div></div>
 <footer><p id="help">拖曳旋轉 · 滾輪縮放 · 右鍵拖曳平移</p><nav aria-label="視角切換"><button data-view="overview" class="active">全校鳥瞰</button><button data-view="gate">校門近看</button><button data-view="track">操場近看</button><button data-view="walk">街道漫遊</button></nav><p class="mobileHelp">單指旋轉 · 雙指縮放／平移</p></footer>
 <div id="error" hidden>無法啟動 3D 畫面。請使用支援 WebGL 的瀏覽器，並開啟硬體加速後重新整理。</div>
-<script>\n(()=>{\n// Self-contained WebGL scene; schematic footprints traced from the supplied aerial reference.
+<script>
+(()=>{
+// Self-contained WebGL scene; schematic footprints traced from the supplied aerial reference.
 const canvas=document.querySelector('#scene');
 const gl=canvas.getContext('webgl',{antialias:true,alpha:false});
 if(!gl){document.querySelector('#error').hidden=false;throw new Error('WebGL unavailable')}
@@ -312,4 +314,6 @@ function resize(){const dpr=Math.min(devicePixelRatio||1,2);canvas.width=Math.ro
 let last=0;function render(now){const dt=Math.min((now-last)/1000,.05);last=now;for(const k of keys)move(k,dt*18);if(dirty){dirty=false;let cam,aim;if(mode==='walk'){cam=eye;aim=[eye[0]+Math.sin(yaw)*Math.cos(pitch),eye[1]+Math.sin(pitch),eye[2]-Math.cos(yaw)*Math.cos(pitch)]}else{cam=[target[0]+distance*Math.sin(theta)*Math.cos(phi),target[1]+distance*Math.sin(phi),target[2]+distance*Math.cos(theta)*Math.cos(phi)];aim=target}const vp=multiply(perspective(canvas.width/canvas.height,cam,aim),lookAt(cam,aim));gl.clearColor(.898,.906,.871,1);gl.enable(gl.DEPTH_TEST);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.uniformMatrix4fv(vpLoc,false,vp);for(const[key,b]of Object.entries(buffers)){if(key==='tree'&&!trees||key==='neighbor'&&!neighbors)continue;gl.bindBuffer(gl.ARRAY_BUFFER,b.buffer);locs.forEach((l,i)=>{gl.enableVertexAttribArray(l);gl.vertexAttribPointer(l,3,gl.FLOAT,false,36,i*12)});gl.drawArrays(gl.TRIANGLES,0,b.count)}for(const a of annotations){const p=[...a.p,1],q=[0,0,0,0];for(let row=0;row<4;row++)for(let k=0;k<4;k++)q[row]+=vp[k*4+row]*p[k];const x=(q[0]/q[3]+1)*innerWidth/2,y=(1-q[1]/q[3])*innerHeight/2;a.el.hidden=!showLabels||mode==='walk'||q[3]<=0||x<20||x>innerWidth-20||y<60||y>innerHeight-90;a.el.style.left=x+'px';a.el.style.top=(y-15)+'px'}}requestAnimationFrame(render)}requestAnimationFrame(render);
 // Read-only diagnostics for geometry and camera verification.
 window.campusModel={eastGate,eastParkingAreas,curbParking,dormitoryVolumes,dormGroundAreas,planPositions,annotations,northConnection,assemblyStage,namedBuildings,extraSports,sportsAreas,driveway,drivewayWidth,roadClearance,footprints,treePositions,counts:Object.fromEntries(Object.entries(buffers).map(([k,v])=>[k,v.count])),setView,getState:()=>({mode,distance,target:[...target],eye:[...eye],trees,neighbors,showLabels})};
-\n})();\n</script></body></html>
+
+})();
+</script></body></html>
